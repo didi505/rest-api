@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Task = require('../models/task');
+const { validateTask } = require('../middleware/validate');
 
 // GET /api/tasks — Alle Tasks (optional gefiltert)
 router.get('/', (req, res) => {
@@ -18,10 +19,9 @@ router.get('/:id', (req, res) => {
   res.json(task);
 });
 
-// POST /api/tasks — Neuen Task erstellen
-router.post('/', (req, res) => {
+// POST /api/tasks — Neuen Task erstellen (mit Validierung)
+router.post('/', validateTask, (req, res) => {
   const { title, description, priority, assignee, tags, storyPoints } = req.body;
-  if (!title) return res.status(400).json({ error: 'Titel ist pflicht' });
   const task = Task.create({ title, description, priority, assignee, tags, storyPoints });
   res.status(201).json(task);
 });
