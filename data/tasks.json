@@ -1,0 +1,22 @@
+[
+  {
+    "id": "16842b26-9c14-488e-9b7a-573401203fc4",
+    "title": "Mein erster Task",
+    "description": "",
+    "status": "backlog",
+    "priority": "high",
+    "assignee": null,
+    "tags": [],
+    "storyPoints": 0,
+    "createdAt": "2026-07-05T13:46:41.194Z",
+    "updatedAt": "2026-07-05T13:46:41.198Z",
+    "startedAt": null,
+    "completedAt": null,
+    "statusHistory": [
+      {
+        "status": "backlog",
+        "timestamp": "2026-07-05T13:46:41.198Z"
+      }
+    ]
+  }
+]
