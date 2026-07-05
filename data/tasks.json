@@ -18,5 +18,65 @@
         "timestamp": "2026-07-05T13:46:41.198Z"
       }
     ]
+  },
+  {
+    "id": "df30cbc8-7a0b-44cb-9644-869e4223b86a",
+    "title": "Mein Task",
+    "description": "",
+    "status": "backlog",
+    "priority": "high",
+    "assignee": null,
+    "tags": [],
+    "storyPoints": 0,
+    "createdAt": "2026-07-05T13:58:48.219Z",
+    "updatedAt": "2026-07-05T13:58:48.226Z",
+    "startedAt": null,
+    "completedAt": null,
+    "statusHistory": [
+      {
+        "status": "backlog",
+        "timestamp": "2026-07-05T13:58:48.226Z"
+      }
+    ]
+  },
+  {
+    "id": "0faabd41-8863-497f-a79b-0aed0d5400e6",
+    "title": "Mein erster Task",
+    "description": "",
+    "status": "backlog",
+    "priority": "high",
+    "assignee": null,
+    "tags": [],
+    "storyPoints": 0,
+    "createdAt": "2026-07-05T14:02:33.783Z",
+    "updatedAt": "2026-07-05T14:02:33.783Z",
+    "startedAt": null,
+    "completedAt": null,
+    "statusHistory": [
+      {
+        "status": "backlog",
+        "timestamp": "2026-07-05T14:02:33.783Z"
+      }
+    ]
+  },
+  {
+    "id": "390ae538-a3a0-4da2-888f-6dc9bd27063d",
+    "title": "Mein erster Task",
+    "description": "",
+    "status": "backlog",
+    "priority": "high",
+    "assignee": null,
+    "tags": [],
+    "storyPoints": 0,
+    "createdAt": "2026-07-05T14:06:02.140Z",
+    "updatedAt": "2026-07-05T14:06:02.140Z",
+    "startedAt": null,
+    "completedAt": null,
+    "statusHistory": [
+      {
+        "status": "backlog",
+        "timestamp": "2026-07-05T14:06:02.140Z"
+      }
+    ]
   }
 ]
