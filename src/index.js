@@ -14,6 +14,11 @@ app.get('/', (req, res) => {
   res.json({ name: 'Tasks-API', version: '1.0.0' });
 });
 
+// Health Check für Docker
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.use('/api/tasks', tasksRouter);
 app.use('/api/board', boardRouter);
 
