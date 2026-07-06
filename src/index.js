@@ -9,8 +9,9 @@ const errorHandler  = require('./middleware/errorHandler');
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static('public'));
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.json({ name: 'Tasks-API', version: '1.0.0' });
 });
 
