@@ -3,13 +3,13 @@
     "id": "16842b26-9c14-488e-9b7a-573401203fc4",
     "title": "Fussball WM schauen",
     "description": "Brasilien vs Norwegen",
-    "status": "in_progress",
+    "status": "review",
     "priority": "high",
     "assignee": null,
     "tags": [],
     "storyPoints": 0,
     "createdAt": "2026-07-05T13:46:41.194Z",
-    "updatedAt": "2026-07-06T14:06:51.167Z",
+    "updatedAt": "2026-07-08T13:00:51.167Z",
     "startedAt": "2026-07-05T20:33:02.194Z",
     "completedAt": null,
     "statusHistory": [
@@ -24,6 +24,10 @@
       {
         "status": "in_progress",
         "timestamp": "2026-07-06T14:06:51.167Z"
+      },
+      {
+      "status": "review",
+        "timestamp": "2026-07-08T13:00:00.167Z"
       }
     ]
   },
