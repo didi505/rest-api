@@ -10,10 +10,14 @@
 
   <!-- HEADER -->
   <header>
-    <h1>📋 Kanban Board</h1>
+    <div class="header-left">
+      <span class="header-logo">🌸</span>
+      <h1>Kanban Board</h1>
+    </div>
     <div class="header-actions">
       <button id="btnAddTask">+ Neuer Task</button>
-      <button id="btnMetrics">📊 Metriken</button>
+      <button id="btnManageAssignees" class="btn-soft">👤 Assignees</button>
+      <button id="btnMetrics" class="btn-soft">📊 Metriken</button>
     </div>
   </header>
 
@@ -30,75 +34,141 @@
       <span class="metric-unit">Stunden</span>
     </div>
     <div class="metric-card">
-      <span class="metric-label">Throughput</span>
+      <span class="metric-label">Durchsatz</span>
       <span class="metric-value" id="metThroughput">–</span>
-      <span class="metric-unit">Tasks erledigt</span>
+      <span class="metric-unit">Tasks / Woche</span>
     </div>
     <div class="metric-card" id="wipCard">
-      <span class="metric-label">WIP (In Progress)</span>
+      <span class="metric-label">WIP gesamt</span>
       <span class="metric-value" id="metWip">–</span>
       <span class="metric-unit">aktive Tasks</span>
     </div>
+    <div class="metric-card">
+      <span class="metric-label">Velocity</span>
+      <span class="metric-value" id="metVelocity">–</span>
+      <span class="metric-unit">Story Points ✅</span>
+    </div>
   </div>
 
-  <!-- BOARD -->
+  <!-- HAUPT-BOARD -->
   <main class="board">
     <div class="column" data-status="backlog">
-      <div class="column-header">
-        <h2>Backlog</h2>
-        <span class="count" id="count-backlog">0</span>
+      <div class="column-header col-backlog">
+        <div class="col-title-row">
+          <h2>Backlog</h2>
+          <span class="count" id="count-backlog">0</span>
+        </div>
+        <div class="wip-row">
+          <span class="wip-label">WIP:</span>
+          <input class="wip-input" type="number" min="1" max="99" placeholder="–" data-col="backlog" />
+        </div>
       </div>
       <div class="task-list" id="col-backlog"></div>
     </div>
 
     <div class="column" data-status="todo">
-      <div class="column-header">
-        <h2>To Do</h2>
-        <span class="count" id="count-todo">0</span>
+      <div class="column-header col-todo">
+        <div class="col-title-row">
+          <h2>To Do</h2>
+          <span class="count" id="count-todo">0</span>
+        </div>
+        <div class="wip-row">
+          <span class="wip-label">WIP:</span>
+          <input class="wip-input" type="number" min="1" max="99" value="5" data-col="todo" />
+        </div>
       </div>
       <div class="task-list" id="col-todo"></div>
     </div>
 
     <div class="column" data-status="in_progress">
-      <div class="column-header">
-        <h2>In Progress</h2>
-        <span class="count" id="count-in_progress">0</span>
+      <div class="column-header col-in_progress">
+        <div class="col-title-row">
+          <h2>In Progress</h2>
+          <span class="count" id="count-in_progress">0</span>
+        </div>
+        <div class="wip-row">
+          <span class="wip-label">WIP:</span>
+          <input class="wip-input" type="number" min="1" max="99" value="3" data-col="in_progress" />
+        </div>
       </div>
       <div class="task-list" id="col-in_progress"></div>
     </div>
 
     <div class="column" data-status="review">
-      <div class="column-header">
-        <h2>Review</h2>
-        <span class="count" id="count-review">0</span>
+      <div class="column-header col-review">
+        <div class="col-title-row">
+          <h2>Review</h2>
+          <span class="count" id="count-review">0</span>
+        </div>
+        <div class="wip-row">
+          <span class="wip-label">WIP:</span>
+          <input class="wip-input" type="number" min="1" max="99" value="2" data-col="review" />
+        </div>
       </div>
       <div class="task-list" id="col-review"></div>
     </div>
 
     <div class="column" data-status="done">
-      <div class="column-header">
-        <h2>Done</h2>
-        <span class="count" id="count-done">0</span>
+      <div class="column-header col-done">
+        <div class="col-title-row">
+          <h2>Done</h2>
+          <span class="count" id="count-done">0</span>
+        </div>
+        <div class="wip-row">
+          <span class="wip-label">WIP:</span>
+          <input class="wip-input" type="number" min="1" max="99" placeholder="–" data-col="done" />
+        </div>
       </div>
       <div class="task-list" id="col-done"></div>
     </div>
   </main>
 
+  <!-- TESTING SEKTION -->
+  <section class="testing-section" data-status="testing">
+    <div class="testing-header">
+      <div class="testing-title-row">
+        <span>🧪</span>
+        <h2>Testing</h2>
+        <span class="count" id="count-testing">0</span>
+        <span class="testing-hint">Optionaler Bereich – aus Review hierher verschieben</span>
+      </div>
+      <div class="wip-row">
+        <span class="wip-label">WIP:</span>
+        <input class="wip-input" type="number" min="1" max="99" value="2" data-col="testing" />
+      </div>
+    </div>
+    <div class="testing-cards" id="col-testing"></div>
+  </section>
+
   <!-- MODAL: Task erstellen / bearbeiten -->
   <div id="modal" class="modal hidden">
     <div class="modal-box">
       <h2 id="modalTitle">Neuer Task</h2>
+
       <label>Titel *</label>
       <input type="text" id="inputTitle" placeholder="z.B. Login-Seite bauen" maxlength="100" />
 
       <label>Beschreibung</label>
       <textarea id="inputDesc" placeholder="Optional..." rows="3"></textarea>
 
-      <label>Priorität</label>
-      <select id="inputPriority">
-        <option value="low">🟢 Low</option>
-        <option value="medium" selected>🟡 Medium</option>
-        <option value="high">🔴 High</option>
+      <div class="form-row">
+        <div class="form-col">
+          <label>Priorität</label>
+          <select id="inputPriority">
+            <option value="low">🟢 Low</option>
+            <option value="medium" selected>🟡 Medium</option>
+            <option value="high">🔴 High</option>
+          </select>
+        </div>
+        <div class="form-col">
+          <label>Story Points</label>
+          <input type="number" id="inputSP" min="0" max="100" value="0" />
+        </div>
+      </div>
+
+      <label>Assignee</label>
+      <select id="inputAssignee">
+        <option value="">— Niemand —</option>
       </select>
 
       <div class="modal-actions">
@@ -108,14 +178,19 @@
     </div>
   </div>
 
-  <!-- MODAL: Task Details / Status wechseln -->
+  <!-- MODAL: Task Details -->
   <div id="detailModal" class="modal hidden">
     <div class="modal-box">
-      <h2 id="detailTitle"></h2>
+      <div class="detail-top">
+        <h2 id="detailTitle"></h2>
+        <div id="detailAvatar" class="avatar avatar-lg"></div>
+      </div>
       <p id="detailDesc" class="detail-desc"></p>
       <div class="detail-meta">
         <span>Priorität: <strong id="detailPriority"></strong></span>
         <span>Status: <strong id="detailStatus"></strong></span>
+        <span>SP: <strong id="detailSP"></strong></span>
+        <span>Assignee: <strong id="detailAssignee"></strong></span>
       </div>
       <label>Status wechseln:</label>
       <div id="transitionBtns" class="transition-btns"></div>
@@ -127,9 +202,35 @@
     </div>
   </div>
 
-  <!-- Toast Benachrichtigung -->
-  <div id="toast" class="toast hidden"></div>
+  <!-- MODAL: Assignees verwalten -->
+  <div id="assigneeModal" class="modal hidden">
+    <div class="modal-box">
+      <h2>👤 Assignees verwalten</h2>
 
+      <div id="assigneeList" class="assignee-list"></div>
+
+      <div class="assignee-form">
+        <h3>Neuer Assignee</h3>
+        <div class="form-row">
+          <div class="form-col">
+            <label>Name</label>
+            <input type="text" id="newAssigneeName" placeholder="z.B. Dilara Özsoy" />
+          </div>
+          <div class="form-col">
+            <label>Farbe</label>
+            <input type="color" id="newAssigneeColor" value="#f9a8d4" style="height:38px;padding:2px 4px;" />
+          </div>
+        </div>
+        <button id="btnAddAssignee" class="btn-primary" style="margin-top:12px;width:100%">+ Hinzufügen</button>
+      </div>
+
+      <div class="modal-actions" style="margin-top:16px">
+        <button id="btnCloseAssignees" class="btn-secondary">Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
   <script src="app.js"></script>
 </body>
 </html>
